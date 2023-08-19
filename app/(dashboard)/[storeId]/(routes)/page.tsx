@@ -1,5 +1,4 @@
 import Heading from '@/components/ui/heading'
-import prismadb from '@/lib/prismadb'
 import { Separator } from '@/components/ui/separator'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { CreditCard, DollarSign, Package } from 'lucide-react'
