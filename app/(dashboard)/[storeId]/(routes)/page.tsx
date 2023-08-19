@@ -11,7 +11,6 @@ import { getGraphRevenue } from '@/actions/get-graph-revenue'
 
 interface DashboardPageProps {
   params: {storeId: string}
-  userId: string | undefined
 };
 
 const DashboardPage: React.FC<DashboardPageProps> = async ({params}) => {
