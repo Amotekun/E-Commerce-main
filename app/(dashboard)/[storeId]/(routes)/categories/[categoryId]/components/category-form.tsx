@@ -53,7 +53,7 @@ const CategoryForm: React.FC<CategoryFormProps> = ({initialData, billboards}) =>
     resolver: zodResolver(formSchema),
     defaultValues: initialData || {
       name: "",
-      billboardId: ""
+      billboardId: "",
     }
   });
 

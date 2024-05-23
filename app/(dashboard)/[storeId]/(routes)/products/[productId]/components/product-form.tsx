@@ -87,8 +87,8 @@ const ProductForm: React.FC<ProductFormProps> = ({initialData, categories, sizes
             } else {
                 await axios.post(`/api/${params.storeId}/products`, data)
             }
-            router.refresh()
             router.push(`/${params.storeId}/products`)
+            router.refresh()
             toast.success(toastMessage)
         } catch (error: any) {
             toast.error("something went wrong")
@@ -100,7 +100,7 @@ const ProductForm: React.FC<ProductFormProps> = ({initialData, categories, sizes
     const onDelete = async () => {
         try {
             setLoading(true);
-            await axios.delete(`/api/$params.storeId/products/${params.productId}`)
+            await axios.delete(`/api/${params.storeId}/products/${params.productId}`)
             router.refresh()
             router.push(`/${params.storeId}/products`)
             toast.success("Store Deleted")
@@ -118,7 +118,7 @@ const ProductForm: React.FC<ProductFormProps> = ({initialData, categories, sizes
         <AlertModal
             isOpen={open}
             onClose={()=>{setOpen(false)}}
-            onConfirm={() => {}}
+            onConfirm={onDelete}
             loading={loading} 
         />
         <div className='flex items-center justify-between'>
@@ -143,24 +143,24 @@ const ProductForm: React.FC<ProductFormProps> = ({initialData, categories, sizes
                 onSubmit={form.handleSubmit(onSubmit)} 
                 className='space-y-8 w-full'
             >
-                    <FormField
-                        control={form.control}
-                        name='images'
-                        render={({field}) =>(
-                            <FormItem>
-                                <FormLabel>Images</FormLabel>
-                                <FormControl>
-                                    <ImageUpload 
-                                    value={field.value.map((image) => image.url)}
-                                    disabled={loading}
-                                    onChange={(url) => field.onChange([...field.value, {url}])}
-                                    onRemove={(url) => field.onChange([...field.value.filter((current) => current.url !== url)])}
-                                    />
-                                </FormControl>
-                                <FormMessage/>
-                            </FormItem>
-                        )}
-                    />   
+                <FormField
+                    control={form.control}
+                    name='images'
+                    render={({field}) =>(
+                        <FormItem>
+                            <FormLabel>Images</FormLabel>
+                            <FormControl>
+                                <ImageUpload 
+                                value={field.value.map((image) => image.url)}
+                                disabled={loading}
+                                onChange={(url) => field.onChange([...field.value, {url}])}
+                                onRemove={(url) => field.onChange([...field.value.filter((current) => current.url !== url)])}
+                                />
+                            </FormControl>
+                            <FormMessage/>
+                        </FormItem>
+                    )}
+                />   
                 <div className='grid grid-cols-3 gap-8'>
                     <FormField
                         control={form.control}

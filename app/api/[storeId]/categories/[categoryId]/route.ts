@@ -23,7 +23,7 @@ export async function GET(
 
         return NextResponse.json(category)
     } catch (error) {
-        console.log("[BILLBOARD_GET]", error)
+        console.log("[CATEGORY_GET]", error)
         return new NextResponse ("Internal Server Error", {status: 500})
     }
 };

@@ -4,7 +4,7 @@ import { NextResponse } from "next/server"
 
 //this code allows us find a specific product in the  database
 export async function GET(
-    REQ: Request,
+    req: Request,
     {params}: {params: {productId: string}}
 ) {
     try {
@@ -26,7 +26,7 @@ export async function GET(
 
         return NextResponse.json(product)
     } catch (error) {
-        console.log("[POST_GET]", error)
+        console.log("[PRODUCT_GET]", error)
         return new NextResponse ("Internal Server Error", {status: 500})
     }
 };
